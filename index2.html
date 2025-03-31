@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <div id="display">Displayed here</div>
+    <script>
+        const input = document.querySelector('input');
+        const displayBox = document.querySelector('#display');
+        let count = 1;
+
+        function debounce(func, timer){
+            let timeOut;
+            return function(...args){
+                clearTimeout(timeOut);
+                timeOut = setTimeout(() =>{
+                    func.apply(this, args);
+                },timer);
+            }
+        }
+
+        function throttle(func, timer){
+            let timeOut;
+            let lastRun;
+            return function(...args){
+                clearTimeout(timeOut);
+                if(!lastRun){
+                    func.apply(this, args);
+                    lastRun = Date.now();
+                } else {
+                    timeOut = setTimeout(() =>{
+                        if(Date.now() - lastRun >= timer){
+                            func.apply(this, args);
+                            lastRun = Date.now();
+                        }
+                    } , timer - (Date.now() - lastRun));
+                }
+            }
+        }
+
+        let display = function(query){
+            console.log(`API called ${count++} times`);
+            displayBox.textContent = `${query}`;
+        }
+
+        const debouncedDisplay = debounce(display, 1000);
+        const throttledDisplay = throttle(display, 1000);
+
+        input.addEventListener('input', (e) =>{
+            throttledDisplay(e.target.value);
+        }); 
+    </script>
+</body>
+</html>
