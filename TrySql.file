@@ -1,0 +1,117 @@
+SELECT * FROM student;
+CREATE TABLE temp1 {
+    id INT;
+    name VARCHAR(50);
+    age INT;
+    city VARCHAR(20);
+    PRIMARY KEY (id); 
+}
+
+
+CREATE DATABASE collage;
+USE collage;
+CREATE TABLE student {
+    rollno INT PRIMARY KEY,
+    name VARCHAR(20);
+}
+INSERT INTO student
+(rollno , name)
+VALUES
+(100, "AK)
+
+INSERT INTO student VALUES  (192, "kALLAL");
+ CREATE DATABASE twyw_company;
+ USE twyw_company;
+
+ CREATE TABLE employee(
+    id INT PRIMRY KEY;
+    name VARCHAR(20);
+    salary INT;
+ ) 
+
+ INSART INTO emloyee;
+ (id , naem)
+ VALUES
+ (1, "ALEX);
+
+ SELECT * FROM employee;
+
+ CREATE TABLE employee (
+    id INT,
+    salary INT DEFAULT 2334);
+ INSART INTO emp(id) VALUES (101);
+ SELECT * FROM emp; 
+
+ CONSTRAINT age_check CHECK (age >= 10 AND city = "wb")
+ CREATE  TABLE newTab (
+     age INT CHECK (age >= 18)
+ );
+
+ SELECT DISTINCT city FROM student; 
+ SLECT * FROM student WHERE marks BETWEEN 80 AND 90;
+  SLECT * FROM student
+  ORDER BY city ASC;
+   SLECT * FROM   student  
+   ORDER BY marks DESC
+   LIMIT 3;  
+
+   SLECT COUNT(marks)
+    FROM student;
+    GROUP BY city;
+
+
+    SELECT city avg (marks), count (rollnumber)
+    FROM student
+    GROUP BY city
+    ORDER BY avg(marks) DESC;
+
+     HAVING max(marks) > 90;
+
+
+     SLECT city
+     FROM student
+     WHERE name = "kallal"
+     GROUP BY city
+     HAVING max(marks) >= 20
+     ORDER BY city ASC;
+
+     UPDATE student
+     SET great = "B"
+     WHERE great="A";
+
+     SET SQL_SAFE_UPDATES = 0; 
+
+     CREATE TABLE teacher (
+        id INT PRIMARY KEY,
+        name VARCHAR(56),
+     )
+     
+
+
+ALTER TABLE student
+ MODIFY COLUMN age VARCHAR(2);
+
+ ALTER TABLE student
+ CHANGE age stu_age INT; 
+ RENAME TO student;
+ ALTER TO student;
+
+ TRUNCATE TABLE student;
+
+
+ ALTER TABLE student
+ CHANGE name full_name VARCHAR(39);
+
+ ALTER TABLE student
+ DROP COLUMN great;
+
+ SELECT column(s)
+ FROM tableA
+ INNER JOIN tableB
+ ON tableA.col_name = tABLEb.COL_name;
+
+ SELECT * 
+ FROM student as a 
+ LEFT JOIN course as B
+ on a.id = b.id
+ WHARE b.id IS  null;
